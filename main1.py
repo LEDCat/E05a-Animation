@@ -14,7 +14,7 @@ SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 SCREEN_TITLE = "Move Mouse Example"
 
-
+#MINE - this is for the ball that moves on screen. It gets drawn under the "draw(self) function."
 class Ball:
     def __init__(self, position_x, position_y, radius, color):
 
@@ -28,7 +28,7 @@ class Ball:
         """ Draw the balls with the instance variables we have. """
         arcade.draw_circle_filled(self.position_x, self.position_y, self.radius, self.color)
 
-
+#MINE - opens a window for the game.
 class MyGame(arcade.Window):
 
     def __init__(self, width, height, title):
@@ -45,16 +45,19 @@ class MyGame(arcade.Window):
         # Create our ball
         self.ball = Ball(50, 50, 15, arcade.color.AUBURN)
 
+#MINE - renders the ball on screen
     def on_draw(self):
         """ Called whenever we need to draw the window. """
         arcade.start_render()
         self.ball.draw()
 
+#MINE - drags the ball to always follow the position of the mouse.
     def on_mouse_motion(self, x, y, dx, dy):
         """ Called to update our objects. Happens approximately 60 times per second."""
         self.ball.position_x = x
         self.ball.position_y = y
 
+#MINE - registers when a button on the mouse is pressed. If the left mouse button is pressed, it changes the ball color black.
     def on_mouse_press(self, x, y, button, modifiers):
         """
         Called when the user presses a mouse button.
@@ -63,6 +66,7 @@ class MyGame(arcade.Window):
         if button == arcade.MOUSE_BUTTON_LEFT:
             self.ball.color = arcade.color.BLACK
 
+#MINE - registers when the mouse button is released. When the left button is released, this returns the ball to a red color.
     def on_mouse_release(self, x, y, button, modifiers):
         """
         Called when a user releases a mouse button.
